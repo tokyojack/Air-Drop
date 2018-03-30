@@ -1,0 +1,4 @@
+name: AirDrop
+author: tokyojack
+version: 1.0
+main: me.tokyojack.spigot.airdrop.Core
