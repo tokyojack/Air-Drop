@@ -14,7 +14,6 @@ public class AirDrop extends Kommand {
 		if (!commandSender.isOp()) {
 			commandSender.sendMessage(ChatColor.RED + "You cannot do that command!");
 			return false;
-
 		}
 
 		if (!(commandSender instanceof Player)) {
@@ -22,8 +21,7 @@ public class AirDrop extends Kommand {
 			return false;
 		}
 
-		((Player) commandSender)
-				.openInventory(Bukkit.createInventory(null, 27, ChatColor.DARK_GRAY + "Airdrop creator"));
+		((Player) commandSender).openInventory(Bukkit.createInventory(null, 27, ChatColor.DARK_GRAY + "Airdrop creator"));
 		return true;
 	}
 }

@@ -11,23 +11,20 @@ import org.bukkit.plugin.java.JavaPlugin;
 import lombok.Getter;
 import me.tokyojack.spigot.airdrop.commands.AirDrop;
 import me.tokyojack.spigot.airdrop.events.AirdropCreatorClose;
+import me.tokyojack.spigot.airdrop.events.ChestOpen;
 import me.tokyojack.spigot.airdrop.utils.BlockRunnable;
 import me.tokyojack.spigot.airdrop.utils.ParticleEffect;
 import me.tokyojack.spigot.airdrop.utils.kommand.KommandManager;
 
+@Getter
 public class Core extends JavaPlugin {
 
+	@Getter
 	private static Core plugin;
 
-	public static Core getPlugin() {
-		return plugin;
-	}
-
-	@Getter
 	private List<Location> airdropLocations = new ArrayList<Location>();
 
-	@Getter
-	BlockRunnable chestParticles = new BlockRunnable(20, this) {
+	private BlockRunnable chestParticles = new BlockRunnable(20, this) {
 
 		@Override
 		protected void start(Block block) {
@@ -51,7 +48,8 @@ public class Core extends JavaPlugin {
 		new KommandManager().addCommand(new AirDrop()).build();
 
 		PluginManager pm = getServer().getPluginManager();
-		pm.registerEvents(new AirdropCreatorClose(this), this);
+		pm.registerEvents(new AirdropCreatorClose(), this);
+		pm.registerEvents(new ChestOpen(), this);
 	}
 
 }

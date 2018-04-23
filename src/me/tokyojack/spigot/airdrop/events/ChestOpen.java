@@ -13,6 +13,8 @@ public class ChestOpen implements Listener {
 
 	@EventHandler
 	public void onChestOpen(PlayerInteractEvent event) {
+		
+		// Checks if the player right clicked
 		if (event.getAction() != Action.RIGHT_CLICK_BLOCK)
 			return;
 
